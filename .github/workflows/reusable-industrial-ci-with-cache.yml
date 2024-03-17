@@ -107,7 +107,7 @@ jobs:
         id: ici
       - name: Print ICI outputs
         if: ${{ always() }}
-        run: echo "${{join(steps.ici.outputs.*, '\n')}}"
+        run: echo 'target_test_results results in ${{steps.ici.outputs.target_test_results}}'
       - name: Download issue template  for target failure  # Has to be a local file
         if: ${{ always() && steps.ici.outcome == 'failure' && github.event_name == 'schedule' }}
         run:
