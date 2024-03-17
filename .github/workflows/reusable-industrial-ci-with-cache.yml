@@ -105,6 +105,8 @@ jobs:
           BEFORE_INSTALL_UPSTREAM_DEPENDENCIES: ${{ inputs.before_install_upstream_dependencies }}
           ROSDEP_SKIP_KEYS: ${{ inputs.rosdep_skip_keys }}
         id: ici
+      - name: Print ICI outputs
+        run: echo "${{join(steps.ici.outputs.*, '\n')}}"
       - name: Download issue template  for target failure  # Has to be a local file
         if: ${{ always() && steps.ici.outcome == 'failure' && github.event_name == 'schedule' }}
         run:
